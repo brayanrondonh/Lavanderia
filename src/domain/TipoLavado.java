@@ -6,9 +6,9 @@ public class TipoLavado
     private double precioxkg;
     private int id_tipoLavado;
 
-    TipoLavado(){}
+    public TipoLavado(){}
 
-    TipoLavado(String tipoLavado, double precioxkg)
+    public TipoLavado(String tipoLavado, double precioxkg)
     {
         this.tipoLavado = tipoLavado;
         this.precioxkg = precioxkg;

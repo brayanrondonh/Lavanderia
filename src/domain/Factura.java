@@ -2,8 +2,8 @@ package domain;
 
 public class Factura
 {
-    private date fecha;
-    private time hora;
+    //private date fecha;
+    //private time hora;
     private String nombreEmpresa;
     private String nombreComercial;
     private String direccion;
@@ -15,11 +15,11 @@ public class Factura
     private String id_factura;
     private boolean cancelado;
 
-    Factura(){}
+    public Factura(){}
 
     //No se agregaron mas contructores ya que es una clase de solo lectura
 
-    public date getFecha()
+    /*public date getFecha()
     {
         return fecha;
     }
@@ -27,7 +27,7 @@ public class Factura
     public time getHora()
     {
         return hora;
-    }
+    }*/
 
     public String getNombreEmpresa()
     {

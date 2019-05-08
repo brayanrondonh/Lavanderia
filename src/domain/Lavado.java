@@ -7,11 +7,11 @@ public class Lavado
     private double total;
     private int id_lavado;
 
-    Lavado(){}
+    public Lavado(){}
 
-    Lavado(double peso, double importe, double total)
+    public Lavado(double peso, double importe, double total)
     {
-        this.peso = paso;
+        this.peso = peso;
         this.importe = importe;
         this.total = total;
     }

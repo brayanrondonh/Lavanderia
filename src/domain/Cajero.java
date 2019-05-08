@@ -7,9 +7,9 @@ public class Cajero
     private String dniCajero;
     private int id_cajero;
 
-    Cajero(){}
+    public Cajero(){}
 
-    Cajero(String nombreCajero, String apellidoCajero, String dniCajero)
+    public Cajero(String nombreCajero, String apellidoCajero, String dniCajero)
     {
         this.nombreCajero = nombreCajero;
         this.apellidoCajero = apellidoCajero;

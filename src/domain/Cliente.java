@@ -9,9 +9,9 @@ public class Cliente
     private String correo;
     private int id_cliente;
 
-    Cliente(){}
+    public Cliente(){}
 
-    Cliente(String nombre, String apellido, String dni, String telefono, String correo)
+    public Cliente(String nombre, String apellido, String dni, String telefono, String correo)
     {
         this.nombre = nombre;
         this.apellido = apellido;
