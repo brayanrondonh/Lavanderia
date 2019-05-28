@@ -1,7 +1,7 @@
 package servlet;
 
 import dao.TipoLavadoDAO;
-import domain.TipoLavado;
+import dto.TipoLavadoDTO;
 import jdbc.jdbc_tipoLavado;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,9 +20,17 @@ public class servletTipoLavado extends HttpServlet
         {
             this.agregar(request,response);
         }
-        else if(accion != null && accion.equals("listar"))
+        else if(accion != null && accion.equals("consultaGeneral"))
         {
-            this.lista(request,response);
+            this.consultaGeneral(request,response);
+        }
+        else if (accion != null && accion.equals("actualizar"))
+        {
+            this.actualizar(request, response);
+        }
+        else
+        {
+            this.lista(request, response);
         }
     }
 
@@ -32,8 +40,12 @@ public class servletTipoLavado extends HttpServlet
         TipoLavadoDAO tipoLavadoDAO = new jdbc_tipoLavado();
         try
         {
-            List<TipoLavado> tipoLavados = tipoLavadoDAO.listar();
-            System.out.println(tipoLavados);
+            List<TipoLavadoDTO> tipoLavados = tipoLavadoDAO.listar();
+            if(tipoLavados!=null)
+            {
+                request.setAttribute("tipoLavados",tipoLavados);
+                request.getRequestDispatcher("../web/tipolavado/listado_tipoLavado.jsp").forward(request,response);
+            }
         }
         catch (SQLException s)
         {
@@ -48,10 +60,14 @@ public class servletTipoLavado extends HttpServlet
         String tipoLavado = request.getParameter("tipo");
         String precio = request.getParameter("precio");
         double precioDouble = Double.parseDouble(precio);
+        TipoLavadoDTO tipoLavadoDTO = new TipoLavadoDTO();
+        tipoLavadoDTO.setTipoLavado(tipoLavado);
+        tipoLavadoDTO.setPrecioxkg(precioDouble);
+
         TipoLavadoDAO tipoLavadoDAO = new jdbc_tipoLavado();
         try
         {
-            boolean test = tipoLavadoDAO.agregarTipoLavado(tipoLavado,precioDouble);
+            boolean test = tipoLavadoDAO.agregar(tipoLavadoDTO);
             if(test)
             {
                 System.out.println("Todo salio bien");
@@ -66,10 +82,9 @@ public class servletTipoLavado extends HttpServlet
             System.out.println("Exploto el agregar tipo lavado en el servlet");
             System.out.println(s.getMessage());
         }
-
     }
 
-    public void consultar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    public void consultaGeneral(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 
     }
@@ -87,10 +102,15 @@ public class servletTipoLavado extends HttpServlet
             int id = Integer.parseInt(idString);
             double precio = Double.parseDouble(precioString);
 
+            TipoLavadoDTO tipoLavadoDTO = new TipoLavadoDTO();
+            tipoLavadoDTO.setTipoLavado(tipoString);
+            tipoLavadoDTO.setPrecioxkg(precio);
+            tipoLavadoDTO.setId_tipoLavado(id);
+
             TipoLavadoDAO tipoLavadoDAO = new jdbc_tipoLavado();
             try
             {
-                boolean test = tipoLavadoDAO.modificarTipoLavado(tipoString,precio,id);
+                boolean test = tipoLavadoDAO.modificar(tipoLavadoDTO);
                 if(test)
                 {
                     System.out.println("Los datos fueron modificados");
@@ -112,10 +132,13 @@ public class servletTipoLavado extends HttpServlet
             String idString = request.getParameter("id");
             int id = Integer.parseInt(idString);
 
+            TipoLavadoDTO tipoLavadoDTO = new TipoLavadoDTO();
+            tipoLavadoDTO.setId_tipoLavado(id);
+
             TipoLavadoDAO tipoLavadoDAO = new jdbc_tipoLavado();
             try
             {
-                boolean test = tipoLavadoDAO.eliminarTipoLavado(id);
+                boolean test = tipoLavadoDAO.eliminar(tipoLavadoDTO);
                 if(test)
                 {
                     System.out.println("Se elimino el tipo de lavado");

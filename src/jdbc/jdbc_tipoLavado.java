@@ -1,7 +1,7 @@
 package jdbc;
 
 import dao.TipoLavadoDAO;
-import domain.TipoLavado;
+import dto.TipoLavadoDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +11,8 @@ import java.util.List;
 
 public class jdbc_tipoLavado implements TipoLavadoDAO
 {
+    private Connection userConn = null;
+
     private final String sql_agregarTipoLavado = "insert into tipolavado (tipoLavado,precio_kg) value (?,?)";
 
     private final String sql_listarTipoLavado = "select * from tipolavado";
@@ -22,28 +24,23 @@ public class jdbc_tipoLavado implements TipoLavadoDAO
     public jdbc_tipoLavado(){}
 
     @Override
-    public boolean agregarTipoLavado(String tipo, double precio)
+    public boolean agregar(TipoLavadoDTO tipoLavadoDTO)
     {
-        System.out.println("Ingreso en agregar tipo de lavado jdbc");
         Connection conn = null;
         PreparedStatement pstmt = null;
-        int rows = 0;
+        int row = 0;
         boolean exito = false;
 
         try
         {
-            conn = Conexion.getConnection();
+            conn = (this.userConn!=null) ? this.userConn : Conexion.getConnection();
             pstmt = conn.prepareStatement(sql_agregarTipoLavado);
             int index = 1;
-            pstmt.setString(index++,tipo);
-            pstmt.setDouble(index,precio);
-            rows = pstmt.executeUpdate();
-            if(rows>0)
-            {
-                System.out.println("Datos almacenados con exito");
-                System.out.println("Filas afectadas: "+rows);
-                exito = true;
-            }
+            pstmt.setString(index++,tipoLavadoDTO.getTipoLavado());
+            pstmt.setDouble(index,tipoLavadoDTO.getPrecioxkg());
+            row = pstmt.executeUpdate();
+            exito = true;
+            System.out.println("Filas afectadas: "+row);
         }
         catch (SQLException s)
         {
@@ -62,9 +59,8 @@ public class jdbc_tipoLavado implements TipoLavadoDAO
     }
 
     @Override
-    public boolean modificarTipoLavado(String tipo, double precio, int id)
+    public boolean modificar(TipoLavadoDTO tipoLavadoDTO)
     {
-        System.out.println("Ingreso en modificar tipo de lavado jdbc");
         Connection conn = null;
         PreparedStatement pstmt = null;
         int row = 0;
@@ -72,14 +68,15 @@ public class jdbc_tipoLavado implements TipoLavadoDAO
 
         try
         {
-            conn = Conexion.getConnection();
+            conn = (this.userConn!=null) ? this.userConn : Conexion.getConnection();
             pstmt = conn.prepareStatement(sql_modificarTipoLavado);
             int index = 1;
-            pstmt.setString(index++,tipo);
-            pstmt.setDouble(index++,precio);
-            pstmt.setInt(index,id);
+            pstmt.setString(index++,tipoLavadoDTO.getTipoLavado());
+            pstmt.setDouble(index++,tipoLavadoDTO.getPrecioxkg());
+            pstmt.setInt(index,tipoLavadoDTO.getId_tipoLavado());
             row = pstmt.executeUpdate();
             exito = true;
+            System.out.println("Filas afectadas: "+row);
         }
         catch (SQLException s)
         {
@@ -98,7 +95,7 @@ public class jdbc_tipoLavado implements TipoLavadoDAO
     }
 
     @Override
-    public boolean eliminarTipoLavado(int id)
+    public boolean eliminar(TipoLavadoDTO tipoLavadoDTO)
     {
         System.out.println("Ingreso en eliminarTipoLavado");
         Connection conn = null;
@@ -108,9 +105,9 @@ public class jdbc_tipoLavado implements TipoLavadoDAO
 
         try
         {
-            conn = Conexion.getConnection();
+            conn = (this.userConn!=null) ? this.userConn : Conexion.getConnection();
             pstmt = conn.prepareStatement(sql_eliminarTipoLavado);
-            pstmt.setInt(1,id);
+            pstmt.setInt(1,tipoLavadoDTO.getId_tipoLavado());
             row = pstmt.executeUpdate();
             exito = true;
         }
@@ -133,16 +130,16 @@ public class jdbc_tipoLavado implements TipoLavadoDAO
     }
 
     @Override
-    public List<TipoLavado> listar()
+    public List<TipoLavadoDTO> listar()
     {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        TipoLavado tipoLavado = null;
-        List<TipoLavado> tipoLavados = new ArrayList<>();
+        TipoLavadoDTO tipoLavado = null;
+        List<TipoLavadoDTO> tipoLavados = new ArrayList<>();
         try
         {
-            conn = Conexion.getConnection();
+            conn = (this.userConn!=null) ? this.userConn : Conexion.getConnection();
             pstmt = conn.prepareStatement(sql_listarTipoLavado);
             rs = pstmt.executeQuery();
             while(rs.next())
@@ -150,7 +147,7 @@ public class jdbc_tipoLavado implements TipoLavadoDAO
                 int idTemp = rs.getInt(1);
                 String tipoTemp = rs.getString(2);
                 double precioTemp = rs.getDouble(3);
-                tipoLavado = new TipoLavado();
+                tipoLavado = new TipoLavadoDTO();
                 tipoLavado.setId_tipoLavado(idTemp);
                 tipoLavado.setTipoLavado(tipoTemp);
                 tipoLavado.setPrecioxkg(precioTemp);

@@ -7,26 +7,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1dc9764-cdd9-4ffe-b6b6-d6cc3840b94a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_mysql_jdbc_5_1_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/CajeroDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/TipoLavadoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jdbc/Conexion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jdbc/jdbc_cajero.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jdbc/jdbc_tipoLavado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servlet/ServletCaja.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servlet/servletTipoLavado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/tipolavado/agregarTipoLavado.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/tipolavado/tipoDeLavado.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dao/ClienteDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jdbc/jdbc_cliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servlet/ServletCajero.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servlet/ServletCliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/cajero/actualizar_cajero.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/cajero/agregar_cajero.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/cajero/listado_cajero.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/cliente/actualizar_cliente.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/cliente/agregar_cliente.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/cliente/listado_cliente.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/factura/actualizar_factura.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/factura/agregar_factura.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/factura/listar_factura.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/index2.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/lavado/actualizar_lavado.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/lavado/agregar_lavado.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/lavado/listado_lavado.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/resources/css/estilos.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/resources/css/normalize.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/resources/js/funciones.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/resources/js/modernizr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/tipolavado/listado_tipoLavado.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/com_mysql_jdbc_5_1_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/com_mysql_jdbc_5_1_5.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lavanderia.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lavanderia.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Lavanderia_war_exploded/WEB-INF/classes/dao/TipoLavadoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Lavanderia_war_exploded/WEB-INF/classes/dao/TipoLavadoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Lavanderia_war_exploded/WEB-INF/classes/domain/Cajero.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Lavanderia_war_exploded/WEB-INF/classes/domain/Cliente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Lavanderia_war_exploded/WEB-INF/classes/domain/Factura.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Lavanderia_war_exploded/WEB-INF/classes/domain/Lavado.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Lavanderia_war_exploded/WEB-INF/classes/domain/TipoLavado.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Lavanderia_war_exploded/WEB-INF/classes/jdbc/jdbc_tipoLavado.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Lavanderia_war_exploded/WEB-INF/classes/jdbc/jdbc_tipoLavado.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Lavanderia_war_exploded/WEB-INF/classes/servlet/servletTipoLavado.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Lavanderia_war_exploded/WEB-INF/classes/servlet/servletTipoLavado.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Lavanderia_war_exploded/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Lavanderia_war_exploded/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/Cajero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Cajero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/Factura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Factura.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/Lavado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Lavado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/TipoLavado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/TipoLavado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lavanderia/dao/TipoLavadoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lavanderia/dao/TipoLavadoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lavanderia/domain/Cajero.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lavanderia/domain/Cliente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lavanderia/domain/Factura.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lavanderia/domain/Lavado.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lavanderia/domain/TipoLavado.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lavanderia/jdbc/jdbc_tipoLavado.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lavanderia/jdbc/jdbc_tipoLavado.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lavanderia/servlet/servletTipoLavado.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lavanderia/servlet/servletTipoLavado.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/CajeroDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/CajeroDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/TipoLavadoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/TipoLavadoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/Cajero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dto/CajeroDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dto/ClienteDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/Factura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dto/FacturaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/Lavado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dto/LavadoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/TipoLavado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dto/TipoLavadoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jdbc/jdbc_cajero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/jdbc_cajero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jdbc/jdbc_tipoLavado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/jdbc_tipoLavado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlet/servletTipoLavado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/servletTipoLavado.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -54,11 +85,13 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
         <option value="Jsp File" />
         <option value="Class" />
       </list>
@@ -78,22 +111,45 @@
         <option value="$PROJECT_DIR$/src/jdbc/Conexion.java" />
         <option value="$PROJECT_DIR$/web/tipoDeLavado.jsp" />
         <option value="$PROJECT_DIR$/src/servlet/Caja.java" />
-        <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/tipolavado/agregarTipoLavado.jsp" />
         <option value="$PROJECT_DIR$/src/dao/TipoLavado.java" />
         <option value="$PROJECT_DIR$/src/jdbc/tipoLavado.java" />
-        <option value="$PROJECT_DIR$/src/dao/TipoLavadoDAO.java" />
         <option value="$PROJECT_DIR$/src/domain/TipoLavado.java" />
         <option value="$PROJECT_DIR$/src/domain/Cajero.java" />
         <option value="$PROJECT_DIR$/src/domain/Cliente.java" />
         <option value="$PROJECT_DIR$/src/domain/Factura.java" />
         <option value="$PROJECT_DIR$/src/domain/Lavado.java" />
         <option value="$PROJECT_DIR$/src/servlet/TipoLavado.java" />
-        <option value="$PROJECT_DIR$/src/jdbc/jdbc_tipoLavado.java" />
         <option value="$PROJECT_DIR$/web/tipolavado/tipoDeLavado.jsp" />
+        <option value="$PROJECT_DIR$/src/dao/TipoLavadoDAO.java" />
+        <option value="$PROJECT_DIR$/src/jdbc/jdbc_tipoLavado.java" />
+        <option value="$PROJECT_DIR$/web/resources/js/funciones.js" />
+        <option value="$PROJECT_DIR$/web/caja/menu.jsp" />
+        <option value="$PROJECT_DIR$/web/resources/css/estilos.css" />
+        <option value="$PROJECT_DIR$/web/test.jsp" />
+        <option value="$PROJECT_DIR$/web/lavado/agregar_lavado.jsp" />
+        <option value="$PROJECT_DIR$/web/lavado/listado_lavado.jsp" />
+        <option value="$PROJECT_DIR$/web/lavado/actualizar_lavado.jsp" />
+        <option value="$PROJECT_DIR$/web/factura/actualizar_factura.jsp" />
+        <option value="$PROJECT_DIR$/web/factura/listar_factura.jsp" />
+        <option value="$PROJECT_DIR$/web/factura/agregar_factura.jsp" />
+        <option value="$PROJECT_DIR$/web/tipolavado/listado_tipoLavado.jsp" />
         <option value="$PROJECT_DIR$/src/servlet/servletTipoLavado.java" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/src/dto/CajeroDTO.java" />
         <option value="$PROJECT_DIR$/src/dao/CajeroDAO.java" />
         <option value="$PROJECT_DIR$/src/jdbc/jdbc_cajero.java" />
+        <option value="$PROJECT_DIR$/web/cajero/agregar_cajero.jsp" />
+        <option value="$PROJECT_DIR$/web/cajero/actualizar_cajero.jsp" />
+        <option value="$PROJECT_DIR$/src/dao/ClienteDAO.java" />
+        <option value="$PROJECT_DIR$/src/servlet/ServletCajero.java" />
+        <option value="$PROJECT_DIR$/web/index2.jsp" />
+        <option value="$PROJECT_DIR$/web/cajero/listado_cajero.jsp" />
+        <option value="$PROJECT_DIR$/web/cliente/agregar_cliente.jsp" />
+        <option value="$PROJECT_DIR$/web/cliente/listado_cliente.jsp" />
+        <option value="$PROJECT_DIR$/web/cliente/actualizar_cliente.jsp" />
+        <option value="$PROJECT_DIR$/src/jdbc/jdbc_cliente.java" />
+        <option value="$PROJECT_DIR$/src/servlet/ServletCliente.java" />
       </list>
     </option>
   </component>
@@ -111,7 +167,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1057" />
   </component>
@@ -123,6 +179,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -134,15 +192,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/libraries/jstl-1.2.jar!/" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -151,10 +208,16 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JSP" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Proyects\Lavanderia\web\resources\js" />
+      <recent name="C:\Proyects\Lavanderia\web\resources\css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Proyects\Lavanderia\web\resources\css" />
+      <recent name="C:\Proyects\Lavanderia\web\resources\js" />
       <recent name="C:\Proyects\Lavanderia\web\tipolavado" />
       <recent name="C:\Proyects\Lavanderia\web" />
     </key>
@@ -234,11 +297,33 @@
       <workItem from="1557165135138" duration="7990000" />
       <workItem from="1557185019504" duration="5447000" />
       <workItem from="1557263097011" duration="10051000" />
+      <workItem from="1557351306070" duration="4671000" />
+      <workItem from="1557426872213" duration="29000" />
+      <workItem from="1557450657514" duration="158000" />
+      <workItem from="1557450966417" duration="5596000" />
+      <workItem from="1557457312867" duration="627000" />
+      <workItem from="1557594910078" duration="6181000" />
+      <workItem from="1557770244173" duration="823000" />
+      <workItem from="1557803405281" duration="141000" />
+      <workItem from="1557842304829" duration="5646000" />
+      <workItem from="1557866081178" duration="154000" />
+      <workItem from="1558124800478" duration="8000" />
+      <workItem from="1558366890346" duration="864000" />
+      <workItem from="1558543874790" duration="767000" />
+      <workItem from="1558629941392" duration="7998000" />
+      <workItem from="1558706957435" duration="6450000" />
+      <workItem from="1558713570074" duration="9309000" />
+      <workItem from="1558724931726" duration="6145000" />
+      <workItem from="1558742148242" duration="1136000" />
+      <workItem from="1558831496583" duration="593000" />
+      <workItem from="1558973186437" duration="4131000" />
+      <workItem from="1558982318952" duration="3991000" />
+      <workItem from="1558991312380" duration="11092000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36307000" />
+    <option name="totallyTimeSpent" value="112817000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -252,8 +337,8 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49891776" visible="true" weight="0.14605543" />
-      <window_info id="Structure" order="1" sideWeight="0.50108224" side_tool="true" weight="0.25382933" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49732047" visible="true" weight="0.14925373" />
+      <window_info id="Structure" order="1" sideWeight="0.5026795" side_tool="true" weight="0.12526652" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
@@ -261,8 +346,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33118972" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32900432" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.33654878" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -270,8 +355,8 @@
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3279743" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32900432" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32900432" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.3279743" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.33654878" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32475883" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32900432" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" weight="0.32900432" />
@@ -285,6 +370,40 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49732047" visible="true" weight="0.15938166" />
+      <window_info id="Structure" order="1" sideWeight="0.5026795" side_tool="true" weight="0.12526652" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32900432" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33654878" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3279743" />
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3279743" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32900432" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3279743" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32475883" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32900432" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.32900432" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24945295" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.32932165" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" weight="0.32932165" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -352,24 +471,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlet/ServletCaja.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/Factura.java">
+    <entry file="file://$PROJECT_DIR$/src/dto/FacturaDTO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
@@ -398,21 +500,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/Lavado.java">
+    <entry file="file://$PROJECT_DIR$/src/dto/LavadoDTO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlet/servletTipoLavado.java">
+    <entry file="file://$PROJECT_DIR$/src/dao/TipoLavadoDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2108">
-          <caret line="124" column="81" lean-forward="true" selection-start-line="124" selection-start-column="81" selection-end-line="124" selection-end-column="81" />
+        <state relative-caret-position="255">
+          <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#doPost#0;class#TipoLavado#0" />
-            <element signature="method#doGet#0;class#TipoLavado#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dto/TipoLavadoDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jdbc/jdbc_tipoLavado.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="98" column="4" selection-start-line="98" selection-start-column="4" selection-end-line="98" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#agregar#0;class#jdbc_tipoLavado#0" />
+            <element signature="method#modificar#0;class#jdbc_tipoLavado#0" />
+            <element signature="method#eliminar#0;class#jdbc_tipoLavado#0" />
+            <element signature="method#listar#0;class#jdbc_tipoLavado#0" />
           </folding>
         </state>
       </provider>
@@ -424,68 +545,273 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/TipoLavado.java">
+    <entry file="file://$PROJECT_DIR$/web/resources/js/jquery-3.3.1.min.js" />
+    <entry file="file://$PROJECT_DIR$/web/resources/css/normalize.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/caja/menu.jsp" />
+    <entry file="file://$PROJECT_DIR$/web/resources/js/funciones.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/resources/css/estilos.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" selection-start-line="18" selection-end-line="18" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/test.jsp" />
+    <entry file="file://$PROJECT_DIR$/web/lavado/agregar_lavado.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/lavado/listado_lavado.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="6" lean-forward="true" selection-end-line="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/lavado/actualizar_lavado.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="92" column="22" lean-forward="true" selection-start-line="92" selection-start-column="22" selection-end-line="92" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/factura/actualizar_factura.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="6" lean-forward="true" selection-end-line="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/factura/listar_factura.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/factura/agregar_factura.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/tipolavado/listado_tipoLavado.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="68" column="116" lean-forward="true" selection-start-line="68" selection-start-column="116" selection-end-line="68" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlet/servletTipoLavado.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#accion#0;class#servletTipoLavado#0" />
+            <element signature="method#actualizar#0;class#servletTipoLavado#0" />
+            <element signature="method#doPost#0;class#servletTipoLavado#0" />
+            <element signature="method#doGet#0;class#servletTipoLavado#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/tipolavado/agregarTipoLavado.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/TipoLavadoDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/dao/CajeroDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/Cliente.java">
+    <entry file="file://$PROJECT_DIR$/src/dto/CajeroDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="32" lean-forward="true" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jdbc/jdbc_cajero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="178" column="4" selection-start-line="178" selection-start-column="4" selection-end-line="178" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#agregar#0;class#jdbc_cajero#0" />
+            <element signature="method#modificar#0;class#jdbc_cajero#0" />
+            <element signature="method#eliminar#0;class#jdbc_cajero#0" />
+            <element signature="method#listar#0;class#jdbc_cajero#0" />
+            <element signature="method#consultar#0;class#jdbc_cajero#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlet/ServletCaja.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/ClienteDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="75" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/cajero/listado_cajero.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="76" selection-start-line="13" selection-start-column="76" selection-end-line="13" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/cajero/agregar_cajero.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index2.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="62" column="45" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/cliente/agregar_cliente.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/cliente/listado_cliente.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="68" column="66" selection-start-line="68" selection-start-column="66" selection-end-line="68" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dto/ClienteDTO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/Cajero.java">
+    <entry file="file://$PROJECT_DIR$/src/servlet/ServletCajero.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jdbc/jdbc_tipoLavado.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2397">
-          <caret line="141" column="55" selection-start-line="141" selection-start-column="55" selection-end-line="141" selection-end-column="55" />
+        <state relative-caret-position="557">
+          <caret line="172" column="13" selection-start-line="172" selection-start-column="13" selection-end-line="172" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#accion#0;class#ServletCajero#0" />
+            <element signature="method#agregar#0;class#ServletCajero#0" />
+            <element signature="method#actualizar#0;class#ServletCajero#0" />
+            <element signature="method#doPost#0;class#ServletCajero#0" />
+            <element signature="method#doGet#0;class#ServletCajero#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/CajeroDAO.java">
+    <entry file="file://$PROJECT_DIR$/web/cajero/actualizar_cajero.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+        <state relative-caret-position="546">
+          <caret line="68" column="124" selection-start-line="68" selection-start-column="124" selection-end-line="68" selection-end-column="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/servlet.ServletCliente">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>servlet.ServletCliente</OriginalElement>
+          <nodes>
+            <node x="" y="">javax.servlet.annotation.WebServlet</node>
+            <node x="" y="">javax.servlet.ServletConfig</node>
+            <node x="" y="">javax.servlet.http.HttpServlet</node>
+            <node x="" y="">javax.servlet.Servlet</node>
+            <node x="" y="">javax.servlet.GenericServlet</node>
+            <node x="" y="">servlet.ServletCliente</node>
+            <node x="" y="">java.io.Serializable</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="205.0" y="129.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jdbc/jdbc_cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#agregar#0;class#jdbc_cliente#0" />
+            <element signature="method#modificar#0;class#jdbc_cliente#0" />
+            <element signature="method#eliminar#0;class#jdbc_cliente#0" />
+            <element signature="method#listar#0;class#jdbc_cliente#0" />
+            <element signature="method#consultar#0;class#jdbc_cliente#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/jdbc/jdbc_cajero.java">
+    <entry file="file://$PROJECT_DIR$/src/servlet/ServletCliente.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="87" selection-start-line="10" selection-start-column="87" selection-end-line="10" selection-end-column="87" />
+        <state relative-caret-position="404">
+          <caret line="163" column="39" selection-start-line="163" selection-start-column="39" selection-end-line="163" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#agregar#0;class#ServletCliente#0" />
+            <element signature="method#listar#0;class#ServletCliente#0" />
+            <element signature="method#consultar#0;class#ServletCliente#0" />
+            <element signature="method#doGet#0;class#ServletCliente#0" />
+            <element signature="method#doPost#0;class#ServletCliente#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/cliente/actualizar_cliente.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="47" column="50" lean-forward="true" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
         </state>
       </provider>
     </entry>
