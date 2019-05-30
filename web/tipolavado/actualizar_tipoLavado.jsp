@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Agregar Tipo de Lavado</title>
+    <title>Actualizar Tipo de Lavado</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../resources/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../resources/css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/estilos.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -46,19 +46,20 @@
 <section id="formularios" class="mx-auto">
     <div class="container">
 
-        <form action="../tipoLavados" method="post">
+        <form action="tipoLavados" method="post">
             <div class="form-group">
-                <input type="hidden" name="accion" value="agregar">
+                <input type="hidden" name="accion" value="actualizar">
+                <input type="hidden" name="id" value="${tipo.id_tipoLavado}">
                 <label for="tipoLavado">Tipo de Lavado</label>
-                <input type="text" name="tipo" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                <input type="text" name="tipo" value="${tipo.tipoLavado}" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
             </div>
             <div class="form-group">
                 <label for="precio">Precio X Kilogramo</label>
-                <input type="number" step="0.01" name="precio" class="form-control" aria-describedby="nombreHelp" placeholder="Ingresa el precio">
+                <input type="number" step="0.01" name="precio" value="${tipo.precioxkg}" class="form-control" aria-describedby="nombreHelp" placeholder="Ingresa el precio">
             </div>
             <div class="row justify-content-end mr-1" id="botones">
-                <button type="reset" class="btn btn-secondary mr-1">Limpiar</button>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" name="eliminar" value="eliminar" class="btn btn-outline-danger mr-1">Eliminar</button>
+                <button type="submit" name="modificar" value="modificar" class="btn btn-primary">Actualizar</button>
             </div>
         </form>
     </div>

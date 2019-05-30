@@ -7,10 +7,10 @@
 
     <!-- Bootstrap CSS -->
     <script src="resources/js/modernizr.js"></script>
-    <link rel="stylesheet" type="text/css" href="resources/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/estilos.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../resources/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../resources/css/estilos.css">
 </head>
 <body>
 
@@ -39,7 +39,7 @@
             <div class="row justify-content-center">
                 <div class="col-6">
                     <div class="alert alert-primary text-center titulo-etiqueta w-sm">
-                        <strong>Cliente</strong>
+                        <strong>Agregar Lavado</strong>
                     </div>
                 </div>
             </div>
@@ -49,8 +49,9 @@
         <section id="formularios" class="mx-auto">
             <div class="container">
 
-                <form>
+                <form action="../lavados" method="post">
                     <div class="form-group">
+                        <input type="hidden" name="accion" value="agregar">
                         <label for="peso">Peso</label>
                         <input type="text" name="peso" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
                     </div>
@@ -66,9 +67,22 @@
                         <label for="igv">IGV</label>
                         <input type="text" name="igv" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
                     </div>
-                    <div class="row justify-content-end mr-1" id="botones">
-                        <button type="reset" class="btn btn-secondary mr-1">Limpiar</button>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    <div class="form-group">
+                        <label for="">¿Pedido Pagado?</label>
+                        <div class="form-check">
+                            <label class="form-check-label" for="radio1">
+                                <input type="radio" class="form-check-input" id="radio1" name="cancelado" value="false" checked>No
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="radio2">
+                                <input type="radio" class="form-check-input" id="radio2" name="cancelado" value="true">Si
+                            </label>
+                        </div>
+                        <div class="row justify-content-end mr-1" id="botones">
+                            <button type="reset" class="btn btn-secondary mr-1">Limpiar</button>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
                     </div>
                 </form>
             </div>

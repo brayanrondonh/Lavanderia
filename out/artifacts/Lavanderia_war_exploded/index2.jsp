@@ -71,7 +71,7 @@
                             </div>
                         </a>
                         <div class="car-body text-center my-2">
-                            <a href="#" class="card-tittle h4 p-2">Lavado</a>
+                            <a href="tipoLavados" class="card-tittle h4 p-2">Tipo de Lavado</a>
                         </div>
                     </div>
                     <div class="col py-3">
@@ -82,7 +82,7 @@
                             </div>
                         </a>
                         <div class="car-body text-center my-2">
-                            <a href="#" class="card-tittle h4 p-2">Tipo de Lavado</a>
+                            <a href="lavados" class="card-tittle h4 p-2">Lavado</a>
                         </div>
                     </div>
                     <div class="col py-3">

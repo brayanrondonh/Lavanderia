@@ -14,4 +14,6 @@ public interface TipoLavadoDAO
     public boolean modificar (TipoLavadoDTO tipoLavadoDTO) throws SQLException, IOException;
 
     public boolean eliminar (TipoLavadoDTO tipoLavadoDTO) throws SQLException, IOException;
+
+    public TipoLavadoDTO consultar (TipoLavadoDTO tipoLavadoDTO) throws SQLException, IOException;
 }

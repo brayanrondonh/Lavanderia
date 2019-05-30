@@ -1,20 +1,17 @@
 package dto;
 
+import java.time.LocalDateTime;
+
 public class LavadoDTO
 {
     private double peso;
     private double importe;
     private double total;
+    private double igv;
+    private boolean cancelado = false;
     private int id_lavado;
 
     public LavadoDTO(){}
-
-    public LavadoDTO(double peso, double importe, double total)
-    {
-        this.peso = peso;
-        this.importe = importe;
-        this.total = total;
-    }
 
     public double getPeso()
     {
@@ -46,9 +43,39 @@ public class LavadoDTO
         this.id_lavado = id_lavado;
     }
 
+    public double getTotal()
+    {
+        return total;
+    }
+
+    public void setTotal(double total)
+    {
+        this.total = total;
+    }
+
+    public double getIgv()
+    {
+        return igv;
+    }
+
+    public void setIgv(double igv)
+    {
+        this.igv = igv;
+    }
+
+    public boolean isCancelado()
+    {
+        return cancelado;
+    }
+
+    public void setCancelado(boolean cancelado)
+    {
+        this.cancelado = cancelado;
+    }
+
     @Override
     public String toString()
     {
-        return "LavadoDTO = idLavado: "+id_lavado+", Peso: "+peso+", Importe: "+importe+", Total: "+total;
+        return "LavadoDTO = idLavado: "+id_lavado+", Peso: "+peso+", Importe: "+importe+", Total: "+total+" IGV: "+igv+" Cancelado: "+cancelado;
     }
 }

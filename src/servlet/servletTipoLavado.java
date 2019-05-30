@@ -10,7 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
 
-@WebServlet("/tipolavado")
+@WebServlet("/tipoLavados")
 public class servletTipoLavado extends HttpServlet
 {
     public void accion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -20,9 +20,9 @@ public class servletTipoLavado extends HttpServlet
         {
             this.agregar(request,response);
         }
-        else if(accion != null && accion.equals("consultaGeneral"))
+        else if(accion != null && accion.equals("consultar"))
         {
-            this.consultaGeneral(request,response);
+            this.consultar(request,response);
         }
         else if (accion != null && accion.equals("actualizar"))
         {
@@ -44,7 +44,7 @@ public class servletTipoLavado extends HttpServlet
             if(tipoLavados!=null)
             {
                 request.setAttribute("tipoLavados",tipoLavados);
-                request.getRequestDispatcher("../web/tipolavado/listado_tipoLavado.jsp").forward(request,response);
+                request.getRequestDispatcher("/tipolavado/listado_tipoLavado.jsp").forward(request,response);
             }
         }
         catch (SQLException s)
@@ -58,6 +58,7 @@ public class servletTipoLavado extends HttpServlet
     {
         System.out.println("Ingreso en agregar tipo de lavado");
         String tipoLavado = request.getParameter("tipo");
+        System.out.println(tipoLavado);
         String precio = request.getParameter("precio");
         double precioDouble = Double.parseDouble(precio);
         TipoLavadoDTO tipoLavadoDTO = new TipoLavadoDTO();
@@ -82,19 +83,40 @@ public class servletTipoLavado extends HttpServlet
             System.out.println("Exploto el agregar tipo lavado en el servlet");
             System.out.println(s.getMessage());
         }
+        this.lista(request, response);
     }
 
-    public void consultaGeneral(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    public void consultar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-
+        System.out.println("Ingreso en consultar");
+        String idString = request.getParameter("id");
+        int id = Integer.parseInt(idString);
+        TipoLavadoDTO tipoLavadoDTO = new TipoLavadoDTO();
+        tipoLavadoDTO.setId_tipoLavado(id);
+        TipoLavadoDAO tipoLavadoDAO = new jdbc_tipoLavado();
+        try
+        {
+            TipoLavadoDTO tipoLavadoDTO1 = tipoLavadoDAO.consultar(tipoLavadoDTO);
+            if (tipoLavadoDTO1 != null)
+            {
+                request.setAttribute("tipo",tipoLavadoDTO1);
+                request.getRequestDispatcher("/tipolavado/actualizar_tipoLavado.jsp").forward(request,response);
+            }
+        }
+        catch (SQLException s)
+        {
+            System.out.println("Error en consultar tipo de lavado en servlet");
+            System.out.println(s.getMessage());
+        }
     }
 
     public void actualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String modificar = request.getParameter("actualizar");
+        System.out.println("Ingreso en actualizar");
+        String modificar = request.getParameter("modificar");
         String eliminar = request.getParameter("eliminar");
 
-        if(modificar != null && modificar.equals("Modificar"))
+        if(modificar != null && modificar.equals("modificar"))
         {
             String idString = request.getParameter("id");
             String tipoString = request.getParameter("tipo");
@@ -127,7 +149,7 @@ public class servletTipoLavado extends HttpServlet
             }
 
         }
-        else if(eliminar != null && eliminar.equals("Eliminar"))
+        else if(eliminar != null && eliminar.equals("eliminar"))
         {
             String idString = request.getParameter("id");
             int id = Integer.parseInt(idString);
@@ -154,6 +176,7 @@ public class servletTipoLavado extends HttpServlet
                 System.out.println(s.getMessage());
             }
         }
+        this.lista(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

@@ -17,9 +17,11 @@ public class jdbc_tipoLavado implements TipoLavadoDAO
 
     private final String sql_listarTipoLavado = "select * from tipolavado";
 
-    private final String sql_modificarTipoLavado = "update from tipolavado set tipoLavado = ?, precio_kg = ? where id_tipoLavado = ?";
+    private final String sql_modificarTipoLavado = "update tipolavado set tipoLavado = ?, precio_kg = ? where id_tipoLavado = ?";
 
     private final String sql_eliminarTipoLavado = "delete from tipolavado where id_tipoLavado = ?";
+
+    private final String sql_consultarTipoLavado = "select * from tipolavado where id_tipoLavado = ?";
 
     public jdbc_tipoLavado(){}
 
@@ -169,5 +171,34 @@ public class jdbc_tipoLavado implements TipoLavadoDAO
             }
         }
         return tipoLavados;
+    }
+
+    @Override
+    public TipoLavadoDTO consultar(TipoLavadoDTO tipoLavadoDTO)
+    {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        TipoLavadoDTO tipoLavadoDTO1 = null;
+        try
+        {
+            conn = (this.userConn!=null) ? this.userConn : Conexion.getConnection();
+            pstmt = conn.prepareStatement(sql_consultarTipoLavado);
+            pstmt.setInt(1,tipoLavadoDTO.getId_tipoLavado());
+            rs = pstmt.executeQuery();
+            while(rs.next())
+            {
+                tipoLavadoDTO1 = new TipoLavadoDTO();
+                tipoLavadoDTO1.setId_tipoLavado(rs.getInt(1));
+                tipoLavadoDTO1.setTipoLavado(rs.getString(2));
+                tipoLavadoDTO1.setPrecioxkg(rs.getDouble(3));
+            }
+        }
+        catch (SQLException s)
+        {
+            System.out.println("Error al consultar tipo de lavado en el jbdc");
+            System.out.println(s.getMessage());
+        }
+        return tipoLavadoDTO1;
     }
 }

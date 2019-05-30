@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Actualizar Cajero</title>
@@ -45,7 +46,7 @@
             </div>
         </div>
 
-
+        <a href="tipolavado/agregarTipoLavado.jsp">Agregar</a>
         <section id="formularios" class="mx-auto">
             <div class="container">
 
@@ -58,11 +59,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
+                    <c:forEach items="${tipoLavados}" var="tipo" varStatus="numero">
+                        <tr>
+                            <th scope="row">${numero.count}</th>
+                            <td><a href="tipoLavados?accion=consultar&id=${tipo.id_tipoLavado}">${tipo.tipoLavado}</a></td>
+                            <td>${tipo.precioxkg} Soles</td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
 

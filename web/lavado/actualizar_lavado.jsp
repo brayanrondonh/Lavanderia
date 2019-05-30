@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -9,8 +10,8 @@
     <script src="resources/js/modernizr.js"></script>
     <link rel="stylesheet" type="text/css" href="resources/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="resources/css/estilos.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
@@ -49,30 +50,61 @@
         <section id="formularios" class="mx-auto">
             <div class="container">
 
-                <form>
+                <form action="lavados" method="post">
                     <div class="form-group">
                         <input type="hidden" name="accion" value="actualizar">
-                        <input type="hidden" name="id_lavado" value="">
+                        <input type="hidden" name="id" value="${lavado.id_lavado}">
                     </div>
                     <div class="form-group">
                         <label for="peso">Peso</label>
-                        <input type="text" name="peso" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                        <input type="text" name="peso" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${lavado.peso}">
                     </div>
                     <div class="form-group">
                         <label for="importe">Importe</label>
-                        <input type="text" name="importe" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                        <input type="text" name="importe" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${lavado.importe}">
                     </div>
                     <div class="form-group">
                         <label for="total">Total</label>
-                        <input type="text" name="total" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                        <input type="text" name="total" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${lavado.total}">
                     </div>
                     <div class="form-group">
                         <label for="igv">IGV</label>
-                        <input type="text" name="igv" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                        <input type="text" name="igv" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${lavado.igv}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">¿Pedido Pagado?</label>
+                        <c:choose>
+
+                            <c:when test="${lavado.cancelado == true}">
+                                <div class="form-check">
+                                    <label class="form-check-label" for="radio1">
+                                        <input type="radio" class="form-check-input" id="radio1" name="cancelado" value="false">No
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label" for="radio2">
+                                        <input type="radio" class="form-check-input" id="radio2" name="cancelado" value="true" checked>Si
+                                    </label>
+                                </div>
+                            </c:when>
+
+                            <c:when test="${lavado.cancelado == false}">
+                                <div class="form-check">
+                                    <label class="form-check-label" for="radio1">
+                                        <input type="radio" class="form-check-input" id="radio1" name="cancelado" value="false" checked>No
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label" for="radio2">
+                                        <input type="radio" class="form-check-input" id="radio2" name="cancelado" value="true">Si
+                                    </label>
+                                </div>
+                            </c:when>
+                        </c:choose>
                     </div>
                     <div class="row justify-content-end mr-1" id="botones">
-                        <button type="submit" value="eliminar" class="btn btn-outline-danger mr-1">Eliminar</button>
-                        <button type="submit" value="actualizar" class="btn btn-primary">Actualizar</button>
+                        <button type="submit" name="eliminar" value="eliminar" class="btn btn-outline-danger mr-1">Eliminar</button>
+                        <button type="submit" name="modificar" value="modificar" class="btn btn-primary">Actualizar</button>
                     </div>
                 </form>
             </div>
