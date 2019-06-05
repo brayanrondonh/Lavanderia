@@ -42,7 +42,7 @@ public class ServletLavado extends HttpServlet
         String importeString = request.getParameter("importe");
         double importe = Double.parseDouble(importeString);
         String totalString = request.getParameter("total");
-        double total = Double.parseDouble(importeString);
+        double total = Double.parseDouble(totalString);
         String igvString = request.getParameter("igv");
         double igv = Double.parseDouble(igvString);
         String canceladoTemp = request.getParameter("cancelado");
@@ -70,7 +70,6 @@ public class ServletLavado extends HttpServlet
 
     public void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        LavadoDTO lavadoDTO = new LavadoDTO();
         LavadoDAO lavadoDAO = new jbdc_lavado();
         try
         {
@@ -100,6 +99,7 @@ public class ServletLavado extends HttpServlet
             LavadoDTO lavadoDTO1 = lavadoDAO.consultar_lavado(lavadoDTO);
             if (lavadoDTO1 != null)
             {
+                System.out.println(lavadoDTO1);
                 request.setAttribute("lavado",lavadoDTO1);
                 request.getRequestDispatcher("/lavado/actualizar_lavado.jsp").forward(request,response);
             }
@@ -126,12 +126,18 @@ public class ServletLavado extends HttpServlet
             String totalString = request.getParameter("total");
             String igvString = request.getParameter("igv");
             String canceladoString = request.getParameter("cancelado");
+            String clienteString = request.getParameter("cliente");
+            String tipoString = request.getParameter("tipo");
+            String cajeroString = request.getParameter("cajero");
 
             double peso = Double.parseDouble(pesoString);
             double importe = Double.parseDouble(importeString);
             double total = Double.parseDouble(totalString);
             double igv = Double.parseDouble(igvString);
             boolean cancelado = Boolean.parseBoolean(canceladoString);
+            int cliente = Integer.parseInt(clienteString);
+            int cajero = Integer.parseInt(cajeroString);
+            int tipo = Integer.parseInt(tipoString);
 
             LavadoDTO lavadoDTO = new LavadoDTO();
             lavadoDTO.setId_lavado(id);
@@ -140,6 +146,9 @@ public class ServletLavado extends HttpServlet
             lavadoDTO.setTotal(total);
             lavadoDTO.setIgv(igv);
             lavadoDTO.setCancelado(cancelado);
+            lavadoDTO.setId_cliente(cliente);
+            lavadoDTO.setId_cajero(cajero);
+            lavadoDTO.setId_tipoLavado(tipo);
 
             LavadoDAO lavadoDAO = new jbdc_lavado();
             try

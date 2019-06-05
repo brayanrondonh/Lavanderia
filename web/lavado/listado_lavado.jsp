@@ -70,15 +70,20 @@
                             <c:forEach var="lav" items="${lavado}" varStatus="numero">
                                 <tr>
                                     <th scope="row">${numero.count}</th>
-                                    <td><a href="lavados?accion=consultar&id=${lav.id_lavado}">Mark</a></td>
+                                    <td><a href="lavados?accion=consultar&id=${lav.id_lavado}">${lav.tipoLavado}</a></td>
                                     <td>${lav.peso}</td>
                                     <td>${lav.importe}</td>
                                     <td>${lav.igv}</td>
                                     <td>${lav.total}</td>
-                                    <td>${lav.cancelado}</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
+                                    <c:if test="${lav.cancelado}">
+                                        <td>Cancelado</td>
+                                    </c:if>
+                                    <c:if test="${lav.cancelado == false}">
+                                        <td>No Cancelado</td>
+                                    </c:if>
+                                    <td>${lav.tiempo}</td>
+                                    <td>${lav.clienteNombre} ${lav.clienteApellido}</td>
+                                    <td>${lav.cajeroNombre} ${lav.cajeroApellido}</td>
                                 </tr>
                             </c:forEach>
                         </tbody>

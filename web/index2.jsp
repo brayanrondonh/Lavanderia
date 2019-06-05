@@ -93,7 +93,7 @@
                             </div>
                         </a>
                         <div class="car-body text-center my-2">
-                            <a href="#" class="card-tittle h4 p-2">Factura</a>
+                            <a href="facturas" class="card-tittle h4 p-2">Factura</a>
                         </div>
                     </div>
                 </div>

@@ -7,10 +7,10 @@
 
     <!-- Bootstrap CSS -->
     <script src="resources/js/modernizr.js"></script>
-    <link rel="stylesheet" type="text/css" href="resources/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/estilos.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../resources/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../resources/css/estilos.css">
 </head>
 <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -48,8 +48,9 @@
         <section id="formularios" class="mx-auto">
             <div class="container">
 
-                <form>
+                <form action="../facturas" method="post">
                     <div class="form-group">
+                        <input type="hidden" name="accion" value="agregar">
                         <label for="nombreEmpresa">Nombre de la Empresa</label>
                         <input type="text" name="nombreEmpresa" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
                     </div>

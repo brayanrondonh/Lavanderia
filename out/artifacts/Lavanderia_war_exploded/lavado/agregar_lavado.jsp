@@ -60,12 +60,12 @@
                         <input type="text" name="importe" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
                     </div>
                     <div class="form-group">
-                        <label for="total">Total</label>
-                        <input type="text" name="total" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
-                    </div>
-                    <div class="form-group">
                         <label for="igv">IGV</label>
                         <input type="text" name="igv" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="total">Total</label>
+                        <input type="text" name="total" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
                     </div>
                     <div class="form-group">
                         <label for="">¿Pedido Pagado?</label>

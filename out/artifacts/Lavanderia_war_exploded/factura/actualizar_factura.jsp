@@ -7,10 +7,10 @@
 
     <!-- Bootstrap CSS -->
     <script src="resources/js/modernizr.js"></script>
-    <link rel="stylesheet" type="text/css" href="resources/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/estilos.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../resources/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../resources/css/estilos.css">
 </head>
 <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -48,42 +48,42 @@
         <section id="formularios" class="mx-auto">
             <div class="container">
 
-                <form>
+                <form action="facturas" method="post">
                     <div class="form-group">
                         <input type="hidden" name="accion" value="actualizar">
-                        <input type="hidden" name="if_factura" value="">
+                        <input type="hidden" name="id_factura" value="${factura.id_factura}">
                     </div>
                     <div class="form-group">
                         <label for="nombreEmpresa">Nombre de la Empresa</label>
-                        <input type="text" name="nombreEmpresa" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                        <input type="text" name="nombreEmpresa" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${factura.nombreEmpresa}">
                     </div>
                     <div class="form-group">
                         <label for="nombreComercial">Nombre Comercial</label>
-                        <input type="text" name="nombreComercial" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                        <input type="text" name="nombreComercial" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${factura.nombreComercial}">
                     </div>
                     <div class="form-group">
                         <label for="ruc">RUC</label>
-                        <input type="text" name="ruc" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                        <input type="text" name="ruc" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${factura.ruc}">
                     </div>
                     <div class="form-group">
                         <label for="direccion">Dirección</label>
-                        <input type="text" name="direccion" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                        <input type="text" name="direccion" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${factura.direccion}">
                     </div>
                     <div class="form-group">
                         <label for="telefono">Telefono</label>
-                        <input type="text" name="telefono" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                        <input type="text" name="telefono" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${factura.telefono}">
                     </div>
                     <div class="form-group">
                         <label for="numeroOperacion">Numero de Operación</label>
-                        <input type="text" name="numeroOperacion" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                        <input type="text" name="numeroOperacion" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${factura.num_operacion}">
                     </div>
                     <div class="form-group">
                         <label for="boleta">Numero de Boleta</label>
-                        <input type="text" name="boleta" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                        <input type="text" name="numeroBoleta" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${factura.num_boleta}">
                     </div>
                     <div class="row justify-content-end mr-1" id="botones">
-                        <button type="submit" value="eliminar" class="btn btn-outline-danger mr-1">Eliminar</button>
-                        <button type="submit" value="actualizar" class="btn btn-primary">Actualizar</button>
+                        <button type="submit" name="eliminar" value="eliminar" class="btn btn-outline-danger mr-1">Eliminar</button>
+                        <button type="submit" name="modificar" value="modificar" class="btn btn-primary">Actualizar</button>
                     </div>
                 </form>
             </div>

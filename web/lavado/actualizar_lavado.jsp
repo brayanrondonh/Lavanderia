@@ -64,12 +64,28 @@
                         <input type="text" name="importe" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${lavado.importe}">
                     </div>
                     <div class="form-group">
+                        <label for="igv">IGV</label>
+                        <input type="text" name="igv" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${lavado.igv}">
+                    </div>
+                    <div class="form-group">
                         <label for="total">Total</label>
                         <input type="text" name="total" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${lavado.total}">
                     </div>
                     <div class="form-group">
-                        <label for="igv">IGV</label>
-                        <input type="text" name="igv" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${lavado.igv}">
+                        <label for="cliente">Cliente</label>
+                        <input type="text" name="cliente" class="form-control" aria-describedby="dniHelp" placeholder="Datos del Cliente" value="${lavado.id_cliente}">
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo">Tipo de Lavado</label>
+                        <input type="text" name="tipo" class="form-control" aria-describedby="dniHelp" placeholder="Tipo de Lavado" value="${lavado.id_tipoLavado}">
+                    </div>
+                    <div class="form-group">
+                        <label for="cajero">Cajero</label>
+                        <input type="text" name="cajero" class="form-control" aria-describedby="dniHelp" placeholder="Datos del Cajero" value="${lavado.id_cajero}">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha">Fecha</label>
+                        <input type="text" name="fecha" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${lavado.tiempo}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">¿Pedido Pagado?</label>

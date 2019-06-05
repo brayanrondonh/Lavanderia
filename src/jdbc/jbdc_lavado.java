@@ -1,6 +1,7 @@
 package jdbc;
 
 import dao.LavadoDAO;
+import dto.ClienteDTO;
 import dto.LavadoDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,20 +9,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Timestamp;
 
 public class jbdc_lavado implements LavadoDAO
 {
     private Connection userConn = null;
 
-    private final String sql_agregar = "insert into lavado (peso, importe, total, igv, cancelado) value (?,?,?,?,?)";
+    private final String sql_agregar = "insert into lavado (peso, importe, total, igv, cancelado, id_cliente, id_cajero, id_tipolavado) value (?,?,?,?,?,?,?,?)";
 
-    private final String sql_actualizar = "update lavado set peso = ?, importe = ?, total = ?, igv = ?, cancelado = ? where id_lavado = ?";
+    private final String sql_actualizar = "update lavado set peso = ?, importe = ?, total = ?, igv = ?, cancelado = ?, id_cliente = ?, id_tipolavado = ?, id_cajero = ? where id_lavado = ?";
 
     private final String sql_borrar = "delete from lavado where id_lavado = ?";
 
-    private final String sql_consultar = "select * from lavado where id_lavado = ?";
+    private final String sql_consultar = "select lavado.id_lavado, lavado.peso, lavado.importe, lavado.total, lavado.igv, lavado.fecha_hora, lavado.cancelado, cajero.nombre, cajero.apellido, cliente.nombre, cliente.apellido, tipolavado.tipoLavado, tipolavado.precio_kg, lavado.id_cliente, lavado.id_cajero, lavado.id_tipoLavado from lavado inner join cajero on cajero.id_cajero = lavado.id_cajero inner join cliente on cliente.id_cliente = lavado.id_cliente inner join tipolavado on tipolavado.id_tipoLavado = lavado.id_tipolavado where id_lavado = ?";
 
-    private final String sql_listar = "select * from lavado";
+    private final String sql_listar = "select lavado.id_lavado, lavado.peso, lavado.importe, lavado.total, lavado.igv, lavado.fecha_hora, lavado.cancelado, cajero.nombre, cajero.apellido, cliente.nombre, cliente.apellido, tipolavado.tipoLavado, tipolavado.precio_kg from lavado inner join cajero on cajero.id_cajero = lavado.id_cajero inner join cliente on cliente.id_cliente = lavado.id_cliente inner join tipolavado on tipolavado.id_tipoLavado = lavado.id_tipolavado";
 
     public jbdc_lavado() {}
 
@@ -45,7 +47,10 @@ public class jbdc_lavado implements LavadoDAO
             pstmt.setDouble(index++,lavadoDTO.getImporte());
             pstmt.setDouble(index++,lavadoDTO.getTotal());
             pstmt.setDouble(index++,lavadoDTO.getIgv());
-            pstmt.setBoolean(index,lavadoDTO.isCancelado());
+            pstmt.setBoolean(index++,lavadoDTO.isCancelado());
+            pstmt.setInt(index++,1);
+            pstmt.setInt(index++,3);
+            pstmt.setInt(index,2);
             row = pstmt.executeUpdate();
             if (row == 1)
             System.out.println("Filas afectadas: "+row);
@@ -74,6 +79,9 @@ public class jbdc_lavado implements LavadoDAO
             pstmt.setDouble(index++,lavadoDTO.getTotal());
             pstmt.setDouble(index++,lavadoDTO.getIgv());
             pstmt.setBoolean(index++,lavadoDTO.isCancelado());
+            pstmt.setInt(index++,lavadoDTO.getId_cliente());
+            pstmt.setInt(index++,lavadoDTO.getId_tipoLavado());
+            pstmt.setInt(index++,lavadoDTO.getId_cajero());
             pstmt.setInt(index,lavadoDTO.getId_lavado());
             row = pstmt.executeUpdate();
             System.out.println("Filas afectadas: "+row);
@@ -129,7 +137,17 @@ public class jbdc_lavado implements LavadoDAO
                 lavadoDTO1.setImporte(rs.getDouble(3));
                 lavadoDTO1.setTotal(rs.getDouble(4));
                 lavadoDTO1.setIgv(rs.getDouble(5));
+                lavadoDTO1.setTiempo(rs.getTimestamp(6));
                 lavadoDTO1.setCancelado(rs.getBoolean(7));
+                lavadoDTO1.setCajeroNombre(rs.getString(8));
+                lavadoDTO1.setCajeroApellido(rs.getString(9));
+                lavadoDTO1.setClienteNombre(rs.getString(10));
+                lavadoDTO1.setClienteApellido(rs.getString(11));
+                lavadoDTO1.setTipoLavado(rs.getString(12));
+                lavadoDTO1.setTipoLavadoPrecioKg(rs.getDouble(13));
+                lavadoDTO1.setId_cliente(rs.getInt(14));
+                lavadoDTO1.setId_cajero(rs.getInt(15));
+                lavadoDTO1.setId_tipoLavado(rs.getInt(16));
             }
         }catch (SQLException s)
         {
@@ -154,27 +172,40 @@ public class jbdc_lavado implements LavadoDAO
             rs = pstmt.executeQuery();
             while (rs.next())
             {
-                int idTemp = rs.getInt(1);
-                double pesoTemp = rs.getDouble(2);
-                double importeTemp = rs.getDouble(3);
-                double totalTemp = rs.getDouble(4);
-                double igvTemp = rs.getDouble(5);
-
-                boolean canceladoTemp = rs.getBoolean(7);
+                int lavadoId_lavadoTemp = rs.getInt(1);
+                double lavadoPesoTemp = rs.getDouble(2);
+                double lavadoImporteTemp = rs.getDouble(3);
+                double lavadoTotalTemp = rs.getDouble(4);
+                double lavadoIgvTemp = rs.getDouble(5);
+                Timestamp timeTemp = rs.getTimestamp(6);
+                boolean lavadoCanceladoTemp = rs.getBoolean(7);
+                String cajeroNombreTemp = rs.getString(8);
+                String cajeroApellidoTemp = rs.getString(9);
+                String clienteNombreTemp = rs.getString(10);
+                String clienteApellidoTemp = rs.getString(11);
+                String tipoLavadoTemp = rs.getString(12);
+                double tipoLavadoPreciokgTemp = rs.getDouble(13);
 
                 lavadoDTO = new LavadoDTO();
-                lavadoDTO.setId_lavado(idTemp);
-                lavadoDTO.setPeso(pesoTemp);
-                lavadoDTO.setImporte(importeTemp);
-                lavadoDTO.setTotal(totalTemp);
-                lavadoDTO.setIgv(igvTemp);
-                lavadoDTO.setCancelado(canceladoTemp);
+                lavadoDTO.setId_lavado(lavadoId_lavadoTemp);
+                lavadoDTO.setPeso(lavadoPesoTemp);
+                lavadoDTO.setImporte(lavadoImporteTemp);
+                lavadoDTO.setTotal(lavadoTotalTemp);
+                lavadoDTO.setIgv(lavadoIgvTemp);
+                lavadoDTO.setTiempo(timeTemp);
+                lavadoDTO.setCancelado(lavadoCanceladoTemp);
+                lavadoDTO.setCajeroNombre(cajeroNombreTemp);
+                lavadoDTO.setCajeroApellido(cajeroApellidoTemp);
+                lavadoDTO.setClienteNombre(clienteNombreTemp);
+                lavadoDTO.setClienteApellido(clienteApellidoTemp);
+                lavadoDTO.setTipoLavado(tipoLavadoTemp);
+                lavadoDTO.setTipoLavadoPrecioKg(tipoLavadoPreciokgTemp);
                 lavadoDTOS.add(lavadoDTO);
             }
         }
         catch (SQLException s)
         {
-            System.out.println("Error al listar lavado jbdc");
+            System.out.println("Error al listar lavado 2  jbdc");
             System.out.println(s.getMessage());
         }
         return lavadoDTOS;
