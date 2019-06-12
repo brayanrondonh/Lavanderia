@@ -50,11 +50,38 @@
             <div class="container">
 
                 <form action="../lavados" method="post">
-                    <div class="form-group">
-                        <input type="hidden" name="accion" value="agregar">
-                        <label for="peso">Peso</label>
-                        <input type="text" name="peso" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+
+                    <div id="wrapGeneral">
+
+
+                        <div class="form-group">
+                            <label for="peso">Peso</label>
+                            <div class="form-inline">
+                                <input type="hidden" name="accion" value="agregar">
+                                <input type="number" name="peso" class="form-control mr-5 w-75 cl" aria-describedby="dniHelp" placeholder="Ingresa el peso" onchange="suma()" min="0" max="100" value="0" step="0.01">
+                                <button type="button" onclick="suma()" name="add" id="add" class="btn btn-primary">+</button>
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Tipo de Lavado</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option selected>Choose...</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+
+                        <div id="wrapInput">
+                        </div>
+
                     </div>
+
+
+
                     <div class="form-group">
                         <label for="importe">Importe</label>
                         <input type="text" name="importe" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
@@ -65,7 +92,7 @@
                     </div>
                     <div class="form-group">
                         <label for="total">Total</label>
-                        <input type="text" name="total" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre">
+                        <input type="number" name="total" id="sumaAll" class="form-control" aria-describedby="totalHelp" placeholder="Total">
                     </div>
                     <div class="form-group">
                         <label for="">¿Pedido Pagado?</label>
@@ -110,5 +137,37 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="../resources/js/funciones.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <script>
+            $(document).ready(function(){
+                var i=1;
+                $('#add').click(function(){
+                    i++;
+                    $('#wrapGeneral').append('<div id="wrapInput'+i+'"><div class="form-group"><label for="peso">Peso</label><div class="form-inline"><input type="number" name="peso" class="form-control mr-5 w-75 cl" aria-describedby="pesoHelp" placeholder="Ingresa el peso" onchange="suma()" min="0" max="100" step="0.01"><button type="button" onclick="suma()" name="remove" id="'+i+'" class="btn btn-danger btn_remove">x</button></div></div><div class="input-group mb-3"><div class="input-group-prepend"><label class="input-group-text" for="inputGroupSelect01">Tipo de Lavado</label></div><select class="custom-select" id="inputGroupSelect01"><option selected>Choose...</option><option value="1">One</option><option value="2">Two</option><option value="3">Three</option></select></div></div>');
+                });
+
+
+                $(document).on('click', '.btn_remove', function(){
+                    var button_id = $(this).attr("id");
+                    $("#wrapInput"+button_id).remove();
+                });
+            });
+
+            function suma() {
+                setTimeout(()=>{
+                    var add=0;
+                $('.cl').each(function(i,el) {
+                    if (!isNaN($(this).val())) {
+                        add += Number($(this).val());
+                    }
+                });
+                $('#sumaAll').val(add);
+            },1)
+            };
+        </script>
 </body>
 </html>

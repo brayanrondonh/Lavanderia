@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <a href="lavado/agregar_lavado.jsp">Agregar Lavado</a>
+        <a href="lavados?accion=registrar">Agregar Lavado</a>
         <section id="formularios" class="mx-auto">
             <div class="container">
 

@@ -1,11 +1,15 @@
 package servlet;
 
 import dao.LavadoDAO;
+import dao.TipoLavadoDAO;
 import dto.LavadoDTO;
+import dto.TipoLavadoDTO;
 import jdbc.jbdc_lavado;
+import jdbc.jdbc_tipoLavado;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
@@ -29,9 +33,30 @@ public class ServletLavado extends HttpServlet
         {
             this.actualizar(request, response);
         }
+        else if (accion != null && accion.equals("registrar"))
+        {
+            this.registrar(request, response);
+        }
         else
         {
             this.listar(request, response);
+        }
+    }
+
+    public void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        TipoLavadoDAO tipoLavadoDAO = new jdbc_tipoLavado();
+        try
+        {
+            List<TipoLavadoDTO> tipoLavadoDTO = tipoLavadoDAO.listar();
+            System.out.println(tipoLavadoDTO);
+            request.setAttribute("tipo", tipoLavadoDTO);
+            request.getRequestDispatcher("/lavado/agregar_lavado2.jsp").forward(request,response);
+        }
+        catch (SQLException s)
+        {
+            System.out.println("Error al listar tipos de lavado en el servlet Lavado");
+            System.out.println(s.getMessage());
         }
     }
 
