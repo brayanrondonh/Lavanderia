@@ -4,12 +4,15 @@ import dao.LavadoDAO;
 import dao.TipoLavadoDAO;
 import dto.LavadoDTO;
 import dto.TipoLavadoDTO;
+import jdbc.Conexion;
 import jdbc.jbdc_lavado;
 import jdbc.jdbc_tipoLavado;
-
 import java.io.IOException;
+import java.sql.Array;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
@@ -23,7 +26,7 @@ public class ServletLavado extends HttpServlet
         String accion = request.getParameter("accion");
         if (accion!=null && accion.equals("agregar"))
         {
-            this.agregar(request, response);
+            this.agregar2(request, response);
         }
         else if (accion != null && accion.equals("consultar"))
         {
@@ -51,7 +54,7 @@ public class ServletLavado extends HttpServlet
             List<TipoLavadoDTO> tipoLavadoDTO = tipoLavadoDAO.listar();
             System.out.println(tipoLavadoDTO);
             request.setAttribute("tipo", tipoLavadoDTO);
-            request.getRequestDispatcher("/lavado/agregar_lavado2.jsp").forward(request,response);
+            request.getRequestDispatcher("/lavado/agregar_lavado.jsp").forward(request,response);
         }
         catch (SQLException s)
         {
@@ -62,33 +65,120 @@ public class ServletLavado extends HttpServlet
 
     public void agregar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String pesoString = request.getParameter("peso");
-        double peso = Double.parseDouble(pesoString);
         String importeString = request.getParameter("importe");
         double importe = Double.parseDouble(importeString);
         String totalString = request.getParameter("total");
         double total = Double.parseDouble(totalString);
-        String igvString = request.getParameter("igv");
+        String igvString = request.getParameter("igvTemp");
         double igv = Double.parseDouble(igvString);
         String canceladoTemp = request.getParameter("cancelado");
         boolean cancelado = Boolean.parseBoolean(canceladoTemp);
+        String totalPiezas = request.getParameter("piezas");
+        String totalTipos = request.getParameter("tipos");
+        String piezas[] = totalPiezas.split(",");
+        String tipos[] = totalTipos.split(",");
 
-
-        LavadoDTO lavadoDTO = new LavadoDTO();
-        lavadoDTO.setPeso(peso);
-        lavadoDTO.setImporte(importe);
-        lavadoDTO.setTotal(total);
-        lavadoDTO.setIgv(igv);
-        lavadoDTO.setCancelado(cancelado);
-        LavadoDAO lavadoDAO = new jbdc_lavado();
-        try
+        if(piezas.length != tipos.length)
         {
-            int row = lavadoDAO.agregar_lavado(lavadoDTO);
+            System.out.println("La cantidad de piezas y tipos no es igual en el servlet lavado");
+            this.listar(request,response);
         }
-        catch (SQLException s)
+        else
         {
-            System.out.println("Error al agregar lavado en el servlet");
-            System.out.println(s.getMessage());
+            LavadoDTO lavadoDTO = new LavadoDTO();
+            lavadoDTO.setImporte(importe);
+            lavadoDTO.setTotal(total);
+            lavadoDTO.setIgv(igv);
+            lavadoDTO.setCancelado(cancelado);
+            LavadoDAO lavadoDAO = new jbdc_lavado();
+            LavadoDAO lavadoDAO1 = new jbdc_lavado();
+            int items = 0;
+            try
+            {
+                int row = lavadoDAO.agregar_lavado(lavadoDTO);
+
+                for(int i=0; i<piezas.length; i++)
+                {
+                    double tipo = Double.parseDouble(tipos[i]);
+                    double pieza = Double.parseDouble(piezas[i]);
+                    items += lavadoDAO1.agregar_items_lavado(row,tipo,pieza);
+                }
+                System.out.println("Items agregados: "+items);
+            }
+            catch (SQLException s)
+            {
+                System.out.println("Error al agregar lavado en el servlet");
+                System.out.println(s.getMessage());
+            }
+            this.listar(request,response);
+        }
+    }
+
+    public void agregar2(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        String importeString = request.getParameter("importe");
+        double importe = Double.parseDouble(importeString);
+        String totalString = request.getParameter("total");
+        double total = Double.parseDouble(totalString);
+        String igvString = request.getParameter("igvTemp");
+        double igv = Double.parseDouble(igvString);
+        String canceladoTemp = request.getParameter("cancelado");
+        boolean cancelado = Boolean.parseBoolean(canceladoTemp);
+        String totalPiezas = request.getParameter("piezas");
+        String totalTipos = request.getParameter("tipos");
+        String piezas[] = totalPiezas.split(",");
+        String tipos[] = totalTipos.split(",");
+
+        if(piezas.length != tipos.length)
+        {
+            System.out.println("La cantidad de piezas y tipos no es igual en el servlet lavado");
+            this.listar(request,response);
+        }
+        else
+        {
+            LavadoDTO lavadoDTO = new LavadoDTO();
+            lavadoDTO.setImporte(importe);
+            lavadoDTO.setTotal(total);
+            lavadoDTO.setIgv(igv);
+            lavadoDTO.setCancelado(cancelado);
+            int items = 0;
+
+            Connection conn = null;
+
+            try
+            {
+                conn = Conexion.getConnection();
+                if (conn.getAutoCommit())
+                {
+                    conn.setAutoCommit(false);
+                }
+
+                LavadoDAO lavadoDAO = new jbdc_lavado(conn);
+                LavadoDAO lavadoDAO1 = new jbdc_lavado(conn);
+                int row = lavadoDAO.agregar_lavado(lavadoDTO);
+                for(int i=0; i<piezas.length; i++)
+                {
+                    double tipo = Double.parseDouble(tipos[i]);
+                    double pieza = Double.parseDouble(piezas[i]);
+                    items += lavadoDAO1.agregar_items_lavado(row,tipo,pieza);
+                }
+                conn.commit();
+                System.out.println("Total de items agregados: "+items);
+            }
+            catch (SQLException s)
+            {
+                //Hacemos rollback en caso de error
+                try
+                {
+                    System.out.println("Entramos en rollBack");
+                    System.out.println(s.getMessage());
+                    conn.rollback();
+                }
+                catch (SQLException s2)
+                {
+                    s2.printStackTrace(System.out);
+                }
+            }
         }
         this.listar(request,response);
     }

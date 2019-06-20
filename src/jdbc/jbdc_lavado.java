@@ -15,7 +15,9 @@ public class jbdc_lavado implements LavadoDAO
 {
     private Connection userConn = null;
 
-    private final String sql_agregar = "insert into lavado (peso, importe, total, igv, cancelado, id_cliente, id_cajero, id_tipolavado) value (?,?,?,?,?,?,?,?)";
+    private final String sql_agregar = "insert into lavado (importe, total, igv, cancelado, id_cliente, id_cajero) value (?,?,?,?,?,?)";
+
+    private final String sql_agregar_items = "insert into tbl_lavado_tipolavado (id_lavado, id_tipoLavado, piezas) value (?,?,?)";
 
     private final String sql_actualizar = "update lavado set peso = ?, importe = ?, total = ?, igv = ?, cancelado = ?, id_cliente = ?, id_tipolavado = ?, id_cajero = ? where id_lavado = ?";
 
@@ -23,7 +25,7 @@ public class jbdc_lavado implements LavadoDAO
 
     private final String sql_consultar = "select lavado.id_lavado, lavado.peso, lavado.importe, lavado.total, lavado.igv, lavado.fecha_hora, lavado.cancelado, cajero.nombre, cajero.apellido, cliente.nombre, cliente.apellido, tipolavado.tipoLavado, tipolavado.precio_kg, lavado.id_cliente, lavado.id_cajero, lavado.id_tipoLavado from lavado inner join cajero on cajero.id_cajero = lavado.id_cajero inner join cliente on cliente.id_cliente = lavado.id_cliente inner join tipolavado on tipolavado.id_tipoLavado = lavado.id_tipolavado where id_lavado = ?";
 
-    private final String sql_listar = "select lavado.id_lavado, lavado.peso, lavado.importe, lavado.total, lavado.igv, lavado.fecha_hora, lavado.cancelado, cajero.nombre, cajero.apellido, cliente.nombre, cliente.apellido, tipolavado.tipoLavado, tipolavado.precio_kg from lavado inner join cajero on cajero.id_cajero = lavado.id_cajero inner join cliente on cliente.id_cliente = lavado.id_cliente inner join tipolavado on tipolavado.id_tipoLavado = lavado.id_tipolavado";
+    private final String sql_listar = "select lavado.id_lavado, lavado.peso, lavado.importe, lavado.total, lavado.igv, lavado.fecha_hora, lavado.cancelado, cajero.nombre, cajero.apellido, cliente.nombre, cliente.apellido from lavado inner join cajero on cajero.id_cajero = lavado.id_cajero inner join cliente on cliente.id_cliente = lavado.id_cliente";
 
     public jbdc_lavado() {}
 
@@ -33,32 +35,80 @@ public class jbdc_lavado implements LavadoDAO
     }
 
     @Override
-    public int agregar_lavado(LavadoDTO lavadoDTO)
+    public int agregar_lavado(LavadoDTO lavadoDTO) throws SQLException
     {
         Connection conn =  null;
         PreparedStatement pstmt = null;
+        ResultSet rs = null;
         int row = 0;
         try
         {
             conn = (this.userConn!=null) ? this.userConn : Conexion.getConnection();
-            pstmt = conn.prepareStatement(sql_agregar);
+            pstmt = conn.prepareStatement(sql_agregar,pstmt.RETURN_GENERATED_KEYS);
             int index = 1;
-            pstmt.setDouble(index++,lavadoDTO.getPeso());
             pstmt.setDouble(index++,lavadoDTO.getImporte());
             pstmt.setDouble(index++,lavadoDTO.getTotal());
             pstmt.setDouble(index++,lavadoDTO.getIgv());
             pstmt.setBoolean(index++,lavadoDTO.isCancelado());
             pstmt.setInt(index++,1);
-            pstmt.setInt(index++,3);
-            pstmt.setInt(index,2);
+            pstmt.setInt(index++,1);
             row = pstmt.executeUpdate();
             if (row == 1)
             System.out.println("Filas afectadas: "+row);
+
+            rs = pstmt.getGeneratedKeys();
+            if (rs.next())
+            {
+                row = rs.getInt(1);
+            }
+            System.out.println("El id generado es: "+row);
         }
-        catch (SQLException s)
+        //Se Comentaron estas lineas ya que se necesita propagar el error del JBDC al servlet y evaluar si se hace commit o no
+        /*catch (SQLException s)
         {
             System.out.println("Error en el insert de lavado jdbc");
             System.out.println(s.getMessage());
+        }*/
+        finally
+        {
+            Conexion.close(pstmt);
+            if (this.userConn==null)
+            {
+                Conexion.close(conn);
+            }
+        }
+        return row;
+    }
+
+    @Override
+    public int agregar_items_lavado(int id_lavado, double id_tipoLavado, double piezas) throws SQLException
+    {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        int row = 0;
+        try
+        {
+            conn = (this.userConn != null) ? this.userConn : Conexion.getConnection();
+            pstmt = conn.prepareStatement(sql_agregar_items);
+            int index = 1;
+            pstmt.setInt(index++,id_lavado);
+            pstmt.setDouble(index++,id_tipoLavado);
+            pstmt.setDouble(index,piezas);
+            row = pstmt.executeUpdate();
+        }
+        //Se Comentaron estas lineas ya que se necesita propagar el error del JBDC al servlet y evaluar si se hace commit o no
+        /*catch (SQLException s)
+        {
+            System.out.println("Error al agregar items de lavado en el jdbc");
+            System.out.println(s.getMessage());
+        }*/
+        finally
+        {
+            Conexion.close(pstmt);
+            if (this.userConn==null)
+            {
+                Conexion.close(conn);
+            }
         }
         return row;
     }
@@ -183,8 +233,8 @@ public class jbdc_lavado implements LavadoDAO
                 String cajeroApellidoTemp = rs.getString(9);
                 String clienteNombreTemp = rs.getString(10);
                 String clienteApellidoTemp = rs.getString(11);
-                String tipoLavadoTemp = rs.getString(12);
-                double tipoLavadoPreciokgTemp = rs.getDouble(13);
+                /*String tipoLavadoTemp = rs.getString(12);
+                double tipoLavadoPreciokgTemp = rs.getDouble(13);*/
 
                 lavadoDTO = new LavadoDTO();
                 lavadoDTO.setId_lavado(lavadoId_lavadoTemp);
@@ -198,8 +248,8 @@ public class jbdc_lavado implements LavadoDAO
                 lavadoDTO.setCajeroApellido(cajeroApellidoTemp);
                 lavadoDTO.setClienteNombre(clienteNombreTemp);
                 lavadoDTO.setClienteApellido(clienteApellidoTemp);
-                lavadoDTO.setTipoLavado(tipoLavadoTemp);
-                lavadoDTO.setTipoLavadoPrecioKg(tipoLavadoPreciokgTemp);
+                /*lavadoDTO.setTipoLavado(tipoLavadoTemp);
+                lavadoDTO.setTipoLavadoPrecioKg(tipoLavadoPreciokgTemp);*/
                 lavadoDTOS.add(lavadoDTO);
             }
         }

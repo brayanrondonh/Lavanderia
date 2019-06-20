@@ -9,6 +9,8 @@ public interface LavadoDAO
 {
     public int agregar_lavado(LavadoDTO lavadoDTO) throws SQLException;
 
+    public int agregar_items_lavado(int id_lavado, double id_tipoLavado, double piezas) throws SQLException;
+
     public int actualizar_lavado(LavadoDTO lavadoDTO) throws SQLException;
 
     public int eliminar_lavado(LavadoDTO lavadoDTO) throws SQLException;
