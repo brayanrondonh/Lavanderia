@@ -15,7 +15,7 @@ public interface LavadoDAO
 
     public int eliminar_lavado(LavadoDTO lavadoDTO) throws SQLException;
 
-    public LavadoDTO consultar_lavado(LavadoDTO lavadoDTO)throws SQLException;
+    public List<LavadoDTO> consultar_lavado(LavadoDTO lavadoDTO)throws SQLException;
 
     public List<LavadoDTO> listar_lavado() throws SQLException;
 }

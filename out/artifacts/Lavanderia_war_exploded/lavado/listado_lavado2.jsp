@@ -1,19 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<head>
-    <title>Listado Lavado</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <title>Listado Lavado</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <script src="resources/js/modernizr.js"></script>
-    <link rel="stylesheet" type="text/css" href="../resources/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="resources/css/estilos.css">
-</head>
-<body>
+        <!-- Bootstrap CSS -->
+        <script src="resources/js/modernizr.js"></script>
+        <link rel="stylesheet" type="text/css" href="../resources/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="resources/css/estilos.css">
+    </head>
+    <body>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <a href="lavados?accion=registrar">Agregar Lavado</a>
+    <a href="lavados?accion=registrar">Agregar Lavado</a>
         <section id="formularios" class="mx-auto">
             <div class="container">
 
@@ -55,36 +55,59 @@
                         <thead class="thead-light">
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Cliente</th>
                             <th scope="col">Total</th>
                             <th scope="col">Importe</th>
                             <th scope="col">IGV</th>
                             <th scope="col">Cancelado</th>
                             <th scope="col">Fecha</th>
-                            <th scope="col">Cliente</th>
                             <th scope="col">Cajero</th>
                         </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="lav" items="${lavado}" varStatus="numero">
-                                <tr>
-                                    <th scope="row">${numero.count}</th>
-<%--                                    <td><a href="lavados?accion=consultar&id=${lav.id_lavado}">${lav.tipoLavado}</a></td>--%>
-                                    <td>${lav.total}</td>
-                                    <td>${lav.importe}</td>
-                                    <td>${lav.igv}</td>
-                                    <c:if test="${lav.cancelado}">
-                                        <td>Cancelado</td>
-                                    </c:if>
-                                    <c:if test="${lav.cancelado == false}">
-                                        <td>No Cancelado</td>
-                                    </c:if>
-                                    <td>${lav.tiempo}</td>
-                                    <td>${lav.clienteNombre} ${lav.clienteApellido}</td>
-                                    <td>${lav.cajeroNombre} ${lav.cajeroApellido}</td>
-                                </tr>
-                            </c:forEach>
+                        <c:forEach var="lav" items="${lavado}" varStatus="numero">
+                            <tr>
+                                <th scope="row">${numero.count}</th>
+                                <td><a href="lavados?accion=consultar&id=${lav.id_lavado}">${lav.clienteNombre} ${lav.clienteApellido}</a></td>
+                                <%--<td><a href="#" class="btn btn-link" data-toggle="modal" data-target="#modal">${lav.clienteNombre} ${lav.clienteApellido}</a></td>--%>
+                                <td>${lav.total}</td>
+                                <td>${lav.importe}</td>
+                                <td>${lav.igv}</td>
+                                <c:if test="${lav.cancelado}">
+                                    <td>Cancelado</td>
+                                </c:if>
+                                <c:if test="${lav.cancelado == false}">
+                                    <td>No Cancelado</td>
+                                </c:if>
+                                <td>${lav.tiempo}</td>
+                                <td>${lav.cajeroNombre} ${lav.cajeroApellido}</td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -113,5 +136,5 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="../resources/js/funciones.js"></script>
-</body>
+    </body>
 </html>

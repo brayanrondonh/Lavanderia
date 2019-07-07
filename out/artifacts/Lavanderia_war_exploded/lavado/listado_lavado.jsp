@@ -55,11 +55,9 @@
                         <thead class="thead-light">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Tipo de Lavado</th>
-                            <th scope="col">Peso</th>
+                            <th scope="col">Total</th>
                             <th scope="col">Importe</th>
                             <th scope="col">IGV</th>
-                            <th scope="col">Total</th>
                             <th scope="col">Cancelado</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Cliente</th>
@@ -70,11 +68,10 @@
                             <c:forEach var="lav" items="${lavado}" varStatus="numero">
                                 <tr>
                                     <th scope="row">${numero.count}</th>
-                                    <td><a href="lavados?accion=consultar&id=${lav.id_lavado}">${lav.tipoLavado}</a></td>
-                                    <td>${lav.peso}</td>
+<%--                                    <td><a href="lavados?accion=consultar&id=${lav.id_lavado}">${lav.tipoLavado}</a></td>--%>
+                                    <td>${lav.total}</td>
                                     <td>${lav.importe}</td>
                                     <td>${lav.igv}</td>
-                                    <td>${lav.total}</td>
                                     <c:if test="${lav.cancelado}">
                                         <td>Cancelado</td>
                                     </c:if>

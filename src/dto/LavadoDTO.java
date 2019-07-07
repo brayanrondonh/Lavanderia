@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 
 public class LavadoDTO
 {
-    private double peso;
     private double importe;
     private double total;
     private double igv;
@@ -21,19 +20,10 @@ public class LavadoDTO
     private int id_cliente;
     private int id_cajero;
     private int id_tipoLavado;
+    private double piezas;
 
 
     public LavadoDTO(){}
-
-    public double getPeso()
-    {
-        return peso;
-    }
-
-    public void setPeso(double peso)
-    {
-        this.peso = peso;
-    }
 
     public double getImporte()
     {
@@ -165,9 +155,17 @@ public class LavadoDTO
         this.id_tipoLavado = id_tipoLavado;
     }
 
+    public double getPiezas() {
+        return piezas;
+    }
+
+    public void setPiezas(double piezas) {
+        this.piezas = piezas;
+    }
+
     @Override
     public String toString()
     {
-        return "LavadoDTO = idLavado: "+id_lavado+", Peso: "+peso+", Importe: "+importe+", Total: "+total+" IGV: "+igv+", Tiempo: "+tiempo+" Cancelado: "+cancelado+", Cajero Nombre: "+cajeroNombre+", Cajero Apellido: "+cajeroApellido+", Cliente Nombre: "+clienteNombre+", Cliente Apellido: "+clienteApellido+", Tipo Lavado: "+tipoLavado+", Tipo Lavado x KG: "+tipoLavadoPrecioKg+", Id Cliente: "+id_cliente+", Id Cajero: "+id_cajero+", Id Tipo Lavado: "+id_tipoLavado;
+        return "LavadoDTO = idLavado: "+id_lavado+", Importe: "+importe+", Total: "+total+" IGV: "+igv+", Tiempo: "+tiempo+" Cancelado: "+cancelado+", Cajero Nombre: "+cajeroNombre+", Cajero Apellido: "+cajeroApellido+", Cliente Nombre: "+clienteNombre+", Cliente Apellido: "+clienteApellido+", Tipo Lavado: "+tipoLavado+", Tipo Lavado x KG: "+tipoLavadoPrecioKg+", Id Cliente: "+id_cliente+", Id Cajero: "+id_cajero+", Id Tipo Lavado: "+id_tipoLavado+", Piezas: "+piezas;
     }
 }

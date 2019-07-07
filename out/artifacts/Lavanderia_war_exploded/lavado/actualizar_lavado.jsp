@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group">
                         <label for="peso">Peso</label>
-                        <input type="text" name="peso" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="${lavado.peso}">
+                        <input type="text" name="peso" class="form-control" aria-describedby="dniHelp" placeholder="Ingresa el nombre" value="">
                     </div>
                     <div class="form-group">
                         <label for="importe">Importe</label>

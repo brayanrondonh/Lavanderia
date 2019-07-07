@@ -68,7 +68,7 @@
                             </div>
                             <select class="custom-select sel" id="tipolavado01" name="" onblur="suma()">
                                 <c:forEach items="${tipo}" var="tipos">
-                                    <option value="${tipos.precioxkg}">${tipos.tipoLavado}</option>
+                                    <option value="${tipos.precioxkg}">${tipos.id_tipoLavado}) ${tipos.tipoLavado}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -151,7 +151,7 @@
                 var i=1;
                 $('#add').click(function(){
                     i++;
-                    $('#wrapGeneral').append('<div id="wrapInput'+i+'"><div class="form-group"><label for="peso">Peso</label><div class="form-inline"><input type="text" name="peso" class="form-control mr-5 w-75 cl" aria-describedby="dniHelp" placeholder="Ingresa el peso" onchange="suma()" required><button type="button" onclick="suma()" name="remove" id="'+i+'" class="btn btn-danger btn_remove">x</button></div></div><div class="input-group mb-3"><div class="input-group-prepend"><label class="input-group-text" for="tipolavado">Tipo de Lavado</label></div><select class="custom-select sel" name="" id="tipolavado0'+i+'" onblur="suma()"><c:forEach items="${tipo}" var="tipos"><option value="${tipos.precioxkg}">${tipos.tipoLavado}</option></c:forEach></select></div></div>');
+                    $('#wrapGeneral').append('<div id="wrapInput'+i+'"><div class="form-group"><label for="peso">Peso</label><div class="form-inline"><input type="text" name="peso" class="form-control mr-5 w-75 cl" aria-describedby="dniHelp" placeholder="Ingresa el peso" onchange="suma()" required><button type="button" onclick="suma()" name="remove" id="'+i+'" class="btn btn-danger btn_remove">x</button></div></div><div class="input-group mb-3"><div class="input-group-prepend"><label class="input-group-text" for="tipolavado">Tipo de Lavado</label></div><select class="custom-select sel" name="" id="tipolavado0'+i+'" onblur="suma()"><c:forEach items="${tipo}" var="tipos"><option value="${tipos.precioxkg}">${tipos.id_tipoLavado}) ${tipos.tipoLavado}</option></c:forEach></select></div></div>');
                 });
 
 
@@ -172,12 +172,22 @@
                     })
 
                     var tipos = '';
+                    var ids = '';
+                    var idsFinal = '';
                     $('.sel').each(function(index)
                     {
                         tipos = tipos + $('#tipolavado0'+(index+1)).val()+',';
                     })
+
+
+                    ids =  $(".sel option:selected").text();
+                    var prueba = ids.split(")");
+                    for (var i =0; i<prueba.length-1; i++)
+                    {
+                        idsFinal = idsFinal + prueba[i].charAt(prueba[i].length-1)+",";
+                    }
                     $('#piezas').val(items);
-                    $('#tipos').val(tipos);
+                    $('#tipos').val(idsFinal);
                 });
             });
 
@@ -196,9 +206,9 @@
                     }
                 });
 
-                $('.sel').each(function(index)
+                $('.sel').each(function(index,el)
                 {
-                    tipos.push(Number($('#tipolavado0'+(index+1)).val()));
+                    tipos.push($(el).val());
                 })
 
                 for(var i= 0; i<items.length; i++)

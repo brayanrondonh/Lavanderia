@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!doctype html>
-<html lang="es">
+<html>
     <head>
-        <title>Agregar Lavado</title>
+        <title>Title</title>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
@@ -13,7 +13,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="resources/css/estilos.css">
     </head>
-    <body>
+    <body id="cargar">
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="index.jsp">LavaJava</a>
@@ -52,26 +53,39 @@
                 <form action="lavados" method="post">
                     <div id="wrapGeneral">
 
+                        <%--<c:set var="contador" scope="page" value="${1}"/>
+                        <c:forEach items="${lavado}" var="lav">
+                            <div class="form-group">
+                                <label for="peso">Peso</label>
+                                <div class="form-inline">
+                                    <input type="text" name="peso" class="form-control mr-5 w-75 cl" aria-describedby="pesoHelp" placeholder="Ingresa el peso" onchange="suma()" required value="${lav.piezas}">
+                                    <input type="hidden" name="accion" value="agregar">
 
-                        <div class="form-group">
-                            <label for="peso">Peso</label>
-                            <div class="form-inline">
-                                <input type="text" name="peso" class="form-control mr-5 w-75 cl" aria-describedby="pesoHelp" placeholder="Ingresa el peso" onchange="suma()" required>
-                                <input type="hidden" name="accion" value="agregar">
-                                <button type="button" onclick="suma()" name="add" id="add" class="btn btn-primary">+</button>
+                                    <c:if test="${contador == 1}">
+                                        <button type="button" onclick="suma()" name="add" id="add" class="btn btn-primary">+</button>
+                                    </c:if>
+                                    <c:if test="${contador > 1}">
+                                        <button type="button" onclick="suma()" name="remove" id="'+i+'" class="btn btn-danger btn_remove">x</button>
+                                    </c:if>
+                                    <c:set var="contador" value="${2}"/>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="tipolavado">Tipo de Lavado</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="tipolavado">Tipo de Lavado</label>
+                                </div>
+                                <select class="custom-select sel" id="tipolavado01" name="" onblur="suma()">
+                                    &lt;%&ndash;<c:forEach items="${tipo}" var="tipos">&ndash;%&gt;
+                                        &lt;%&ndash;<option value="${tipos.precioxkg}">${tipos.tipoLavado}</option>&ndash;%&gt;
+                                        <option value="${lav.tipoLavadoPrecioKg}">${lav.tipoLavado}</option>
+                                    &lt;%&ndash;</c:forEach>&ndash;%&gt;
+                                </select>
+                                <input type="text" value="${lav.tipoLavadoPrecioKg}">
+                                <input type="text" value="${lav.tipoLavado}">
                             </div>
-                            <select class="custom-select sel" id="tipolavado01" name="" onblur="suma()">
-                                <c:forEach items="${tipo}" var="tipos">
-                                    <option value="${tipos.precioxkg}">${tipos.id_tipoLavado}) ${tipos.tipoLavado}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
+                        </c:forEach>--%>
+
 
                         <div id="wrapInput">
                         </div>
@@ -145,18 +159,38 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="../resources/js/funciones.js"></script>
 
         <script>
             $(document).ready(function(){
-                var i=1;
-                $('#add').click(function(){
+                var i=0;
+                $('#cargar').ready(function() {
+                    <c:set var="count" value="${1}"/>
+                    <c:forEach var="lav" items="${lavado}">
+                        i++;
+                        <c:if test="${count == 1}">
+                            $('#wrapGeneral').append('<div id="wrapInput'+i+'"><div class="form-group"><label for="peso">Peso</label><div class="form-inline"><input type="number" name="peso" class="form-control mr-5 w-75 cl" aria-describedby="dniHelp" placeholder="Ingresa el peso" onchange="suma()" required value="${lav.piezas}"><button type="button" onclick="suma()" name="add" id="add" class="btn btn-primary btn_add">+</button></div></div><div class="input-group mb-3"><div class="input-group-prepend"><label class="input-group-text" for="tipolavado">Tipo de Lavado</label></div><select class="custom-select sel sel2" name="" id="tipolavado0'+i+'" onblur="suma()"><option value="${lav.tipoLavadoPrecioKg}">${lav.id_tipoLavado}) ${lav.tipoLavado}</option></select></div></div>');
+                        </c:if>
+                        <c:if test="${count > 1}">
+                            $('#wrapGeneral').append('<div id="wrapInput'+i+'"><div class="form-group"><label for="peso">Peso</label><div class="form-inline"><input type="number" name="peso" class="form-control mr-5 w-75 cl" aria-describedby="dniHelp" placeholder="Ingresa el peso" onchange="suma()" required value="${lav.piezas}"><button type="button" onclick="suma()" name="remove" id="'+i+'" class="btn btn-danger btn_remove">x</button></div></div><div class="input-group mb-3"><div class="input-group-prepend"><label class="input-group-text" for="tipolavado">Tipo de Lavado</label></div><select class="custom-select sel sel2" name="" id="tipolavado0'+i+'" onblur="suma()"><option value="${lav.tipoLavadoPrecioKg}">${lav.id_tipoLavado}) ${lav.tipoLavado}</option></select></div></div>');
+                        </c:if>
+                        <c:set var="count" value="${1+1}"/>
+                    </c:forEach>
+                    suma();
+                });
+
+                <c:forEach items="${tipo}" var="tipos">
+                    $('.sel2').append('<option value="1">Test</option>');
+                </c:forEach>
+
+                $(document).on('click','.btn_add',function(){
                     i++;
                     $('#wrapGeneral').append('<div id="wrapInput'+i+'"><div class="form-group"><label for="peso">Peso</label><div class="form-inline"><input type="text" name="peso" class="form-control mr-5 w-75 cl" aria-describedby="dniHelp" placeholder="Ingresa el peso" onchange="suma()" required><button type="button" onclick="suma()" name="remove" id="'+i+'" class="btn btn-danger btn_remove">x</button></div></div><div class="input-group mb-3"><div class="input-group-prepend"><label class="input-group-text" for="tipolavado">Tipo de Lavado</label></div><select class="custom-select sel" name="" id="tipolavado0'+i+'" onblur="suma()"><c:forEach items="${tipo}" var="tipos"><option value="${tipos.precioxkg}">${tipos.id_tipoLavado}) ${tipos.tipoLavado}</option></c:forEach></select></div></div>');
                 });
 
-
                 $(document).on('click', '.btn_remove', function(){
                     var button_id = $(this).attr("id");
+                    alert(button_id);
                     $("#wrapInput"+button_id).remove();
                 });
 
